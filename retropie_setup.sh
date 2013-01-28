@@ -627,7 +627,7 @@ function install_advancemenu()
         configure_advancemenu
         rm advancemenu-2.5.0.tar.gz
 
-        dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Remember to increase the GPU memory again (e.g., via the raspi-config script)!" 22 76    
+        dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Remember to increase the GPU memory again (e.g., via the raspi-config script)!" 22 76    
 
      ;;
       *)
@@ -877,7 +877,7 @@ function enableSNESDevAtStart()
 
     if [[ ! -f "/etc/init.d/SNESDev" ]]; then
         if [[ ! -f "$rootdir/supplementary/SNESDev-Rpi/bin/SNESDev" ]]; then
-            dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Cannot find SNESDev binary. Please install SNESDev." 22 76    
+            dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Cannot find SNESDev binary. Please install SNESDev." 22 76    
             return
         else
             chmod +x "$rootdir/supplementary/SNESDev-Rpi/scripts/SNESDev"
@@ -964,7 +964,7 @@ function disableSNESDevAtStart()
 # Show dialogue for enabling/disabling SNESDev on boot
 function enableDisableSNESDevStart()
 {
-    cmd=(dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --menu "Choose the desired boot behaviour." 22 86 16)
+    cmd=(dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --menu "Choose the desired boot behaviour." 22 86 16)
     options=(1 "Disable SNESDev on boot and SNESDev keyboard mapping."
              2 "Enable SNESDev on boot and SNESDev keyboard mapping (polling pads and button)."
              3 "Enable SNESDev on boot and SNESDev keyboard mapping (polling only pads)."
@@ -973,16 +973,16 @@ function enableDisableSNESDevStart()
     if [ "$choices" != "" ]; then
         case $choices in
             1) disableSNESDevAtStart
-               dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Disabled SNESDev on boot." 22 76    
+               dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Disabled SNESDev on boot." 22 76    
                             ;;
             2) enableSNESDevAtStart 3
-               dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Enabled SNESDev on boot (polling pads and button)." 22 76    
+               dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Enabled SNESDev on boot (polling pads and button)." 22 76    
                             ;;
             3) enableSNESDevAtStart 1
-               dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Enabled SNESDev on boot (polling only pads)." 22 76    
+               dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Enabled SNESDev on boot (polling only pads)." 22 76    
                             ;;
             4) enableSNESDevAtStart 2
-               dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Enabled SNESDev on boot (polling only button)." 22 76    
+               dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Enabled SNESDev on boot (polling only button)." 22 76    
                             ;;
         esac
     else
@@ -1227,7 +1227,7 @@ function install_esthemes()
 # sets the ARM frequency of the Raspberry to a specific value
 function setArmFreq()
 {
-    cmd=(dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --menu "Choose the ARM frequency. However, it is suggested that you change this with the raspi-config script!" 22 76 16)
+    cmd=(dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --menu "Choose the ARM frequency. However, it is suggested that you change this with the raspi-config script!" 22 76 16)
     options=(700 "(default)"
              750 "(do this at your own risk!)"
              800 "(do this at your own risk!)"
@@ -1244,14 +1244,14 @@ function setArmFreq()
             toreplace=`egrep -i "#? *arm_freq=[0-9]*" /boot/config.txt`
             sed /boot/config.txt -i -e "s|$toreplace|arm_freq=$armfreqchoice|g"
         fi
-        dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "ARM frequency set to $armfreqchoice MHz. If you changed the frequency, you need to reboot." 22 76    
+        dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "ARM frequency set to $armfreqchoice MHz. If you changed the frequency, you need to reboot." 22 76    
     fi
 }
 
 # sets the SD ram frequency of the Raspberry to a specific value
 function setSDRAMFreq()
 {
-    cmd=(dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --menu "Choose the ARM frequency. However, it is suggested that you change this with the raspi-config script!" 22 76 16)
+    cmd=(dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --menu "Choose the ARM frequency. However, it is suggested that you change this with the raspi-config script!" 22 76 16)
     options=(400 "(default)"
              425 "(do this at your own risk!)"
              450 "(do this at your own risk!)"
@@ -1267,7 +1267,7 @@ function setSDRAMFreq()
             toreplace=`egrep -i "#? *sdram_freq=[0-9]*" /boot/config.txt`
             sed /boot/config.txt -i -e "s|$toreplace|sdram_freq=$sdramfreqchoice|g"
         fi
-        dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "SDRAM frequency set to $sdramfreqchoice MHz. If you changed the frequency, you need to reboot." 22 76    
+        dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "SDRAM frequency set to $sdramfreqchoice MHz. If you changed the frequency, you need to reboot." 22 76    
     fi
 }
 
@@ -1315,7 +1315,7 @@ function showHelp()
 # Start Emulation Station on boot or not?
 function changeBootbehaviour()
 {
-    cmd=(dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --menu "Choose the desired boot behaviour." 22 76 16)
+    cmd=(dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --menu "Choose the desired boot behaviour." 22 76 16)
     options=(1 "Original boot behaviour"
              2 "Start Emulation Station at boot.")
     choices=$("${cmd[@]}" "${options[@]}" 2>&1 >/dev/tty)
@@ -1323,14 +1323,14 @@ function changeBootbehaviour()
         case $choices in
             1) sed /etc/inittab -i -e "s|1:2345:respawn:/bin/login -f $user tty1 </dev/tty1 >/dev/tty1 2>&1|1:2345:respawn:/sbin/getty --noclear 38400 tty1|g"
                sed /etc/profile -i -e "/emulationstation/d"
-               dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Enabled original boot behaviour." 22 76    
+               dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Enabled original boot behaviour." 22 76    
                             ;;
             2) sed /etc/inittab -i -e "s|1:2345:respawn:/sbin/getty --noclear 38400 tty1|1:2345:respawn:\/bin\/login -f $user tty1 \<\/dev\/tty1 \>\/dev\/tty1 2\>\&1|g"
                if [ -z $(egrep -i "emulationstation$" /etc/profile) ]
                then
                    echo "[ -n \"\${SSH_CONNECTION}\" ] || emulationstation" >> /etc/profile
                fi
-               dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Emulation Station is now starting on boot." 22 76    
+               dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Emulation Station is now starting on boot." 22 76    
                             ;;
         esac
     else
@@ -1377,10 +1377,10 @@ function installGameconGPIOModule()
 
 	#test if module installation is OK
 	if [[ -n $(modinfo -n gamecon_gpio_rpi | grep gamecon_gpio_rpi.ko) ]]; then
-	        dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Gamecon GPIO driver successfully installed. \
+	        dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Gamecon GPIO driver successfully installed. \
 		Use 'zless /usr/share/doc/gamecon_gpio_rpi/README.gz' to read how to use it." 22 76
 	else
-		dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Gamecon GPIO driver installation FAILED"\
+		dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Gamecon GPIO driver installation FAILED"\
 		22 76
 	fi
 }
@@ -1495,7 +1495,7 @@ __________\n\
             ;;
         esac
 
-        dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox \
+        dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox \
 	"Gamecon GPIO driver enabled with 2 SNES pads." 22 76
 }
 
@@ -1558,7 +1558,7 @@ function essc_runcrc()
 
 function essc_setimgw()
 {
-    cmd=(dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --inputbox "Please enter the maximum image width in pixels." 22 76 16)
+    cmd=(dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --inputbox "Please enter the maximum image width in pixels." 22 76 16)
     choices=$("${cmd[@]}" 2>&1 >/dev/tty)
     if [ "$choices" != "" ]; then
         esscrapimgw=$choices
@@ -1654,7 +1654,7 @@ function createDebugLog()
 
     echo -e "\nEnd of log file" >> "$rootdir/debug.log" >> "$rootdir/debug.log"
 
-    dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Debug log was generated in $rootdir/debug.log" 22 76    
+    dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Debug log was generated in $rootdir/debug.log" 22 76    
 
 }
 
@@ -1703,10 +1703,10 @@ function main_binaries()
     __INFMSGS="$__INFMSGS You need to copy NeoGeo BIOS files to the folder '$rootdir/emulators/gngeo-0.7/neogeo-bios/'."
 
     if [[ ! -z $__INFMSGS ]]; then
-        dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "$__INFMSGS" 20 60
+        dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "$__INFMSGS" 20 60
     fi
 
-    dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Finished tasks.\nStart the front end with 'emulationstation'. You now have to copy roms to the roms folders. Have fun!" 22 76    
+    dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Finished tasks.\nStart the front end with 'emulationstation'. You now have to copy roms to the roms folders. Have fun!" 22 76    
 }
 
 ##################
@@ -1716,7 +1716,7 @@ function main_binaries()
 function scraperMenu()
 {
     while true; do
-        cmd=(dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --menu "Choose task." 22 76 16)
+        cmd=(dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --menu "Choose task." 22 76 16)
         options=(1 "(Re-)scape of the ROMs directory"
                  2 "Forced (re-)scrape of the ROMs directory"
                  3 "(Re-)scrape of the ROMs directory with CRC option"
@@ -1740,7 +1740,7 @@ function scraperMenu()
 
 function main_options()
 {
-    cmd=(dialog --separate-output --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --checklist "Select options with 'space' and arrow keys. The default selection installs a complete set of packages and configures basic settings. The entries marked as (C) denote the configuration steps. For an update of an installation you would deselect these to keep all your settings untouched." 22 76 16)
+    cmd=(dialog --separate-output --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --checklist "Select options with 'space' and arrow keys. The default selection installs a complete set of packages and configures basic settings. The entries marked as (C) denote the configuration steps. For an update of an installation you would deselect these to keep all your settings untouched." 22 76 16)
     options=(1 "Install latest rpi-update script" ON     # any option can be set to default to "on"
              2 "Update firmware with rpi-update" OFF \
              3 "Update APT repositories" ON \
@@ -1834,21 +1834,21 @@ function main_options()
         createDebugLog
 
         if [[ ! -z $__ERRMSGS ]]; then
-            dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "$__ERRMSGS See debug.log for more details." 20 60    
+            dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "$__ERRMSGS See debug.log for more details." 20 60    
         fi
 
         if [[ ! -z $__INFMSGS ]]; then
-            dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "$__INFMSGS" 20 60
+            dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "$__INFMSGS" 20 60
         fi
 
-        dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Finished tasks.\nStart the front end with 'emulationstation'. You now have to copy roms to the roms folders. Have fun!" 20 60    
+        dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --msgbox "Finished tasks.\nStart the front end with 'emulationstation'. You now have to copy roms to the roms folders. Have fun!" 20 60    
     fi
 }
 
 function main_setup()
 {
     while true; do
-        cmd=(dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --menu "Choose task." 22 76 16)
+        cmd=(dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --menu "Choose task." 22 76 16)
         options=(1 "Re-generate config file for Emulation Station"
                  2 "Install latest Rasperry Pi firmware"
                  3 "Install AdvanceMenu"
@@ -1933,7 +1933,7 @@ fi
 availFreeDiskSpace 600000
 
 while true; do
-    cmd=(dialog --backtitle "PetRockBlock.com - RetroPie Setup. Installation folder: $rootdir for user $user" --menu "Choose installation either based on binaries or on sources." 22 76 16)
+    cmd=(dialog --backtitle "RetroPie Setup. Installation folder: $rootdir for user $user" --menu "Choose installation either based on binaries or on sources." 22 76 16)
     # options=(1 "Binaries-based installation (faster, (probably) not the newest)"
     options=(1 "Installation and update"
              2 "Setup (only if you already have run one of the installations above)"
